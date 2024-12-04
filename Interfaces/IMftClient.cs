@@ -5,6 +5,6 @@
 /// </summary>
 public interface IMftClient
 {
-    void AddUser();
-    void AddWorkflow();
+    Task<bool> AddUserAsync();
+    Task<bool> AddWorkflowAsync();
 }

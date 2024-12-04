@@ -18,7 +18,7 @@ public class MftController : ControllerBase
     [HttpGet]
     public void TestClient(MftClient clientType)
     {
-        IMftClient client = _mftClientFactory.Create(clientType);
-        client.AddUser();
+        var client = _mftClientFactory.Create(clientType);
+        client.AddUserAsync();
     }
 }

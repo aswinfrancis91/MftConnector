@@ -10,12 +10,12 @@ public class MoveItMftClient : IMftClient
     {
         _httpClient = httpClient;
     }
-    public void AddUser()
+    public async Task<bool> AddUserAsync()
     {
         throw new NotImplementedException();
     }
 
-    public void AddWorkflow()
+    public async Task<bool> AddWorkflowAsync()
     {
         throw new NotImplementedException();
     }

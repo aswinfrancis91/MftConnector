@@ -1,5 +1,4 @@
-﻿using System.Net.Http.Headers;
-using MftConnector.Interfaces;
+﻿using MftConnector.Interfaces;
 
 namespace MftConnector.Models;
 
@@ -10,15 +9,15 @@ public class GoAnywhereMftClient : IMftClient
     public GoAnywhereMftClient(HttpClient httpClient)
     {
         _httpClient = httpClient;
-        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64EncodedAuthenticationString);
     }
 
-    public void AddUser()
+    public async Task<bool> AddUserAsync()
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.PostAsync("/api/users", null); // Adjust path and content as needed
+        return response.IsSuccessStatusCode;
     }
 
-    public void AddWorkflow()
+    public Task<bool> AddWorkflowAsync()
     {
         throw new NotImplementedException();
     }
