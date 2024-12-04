@@ -7,6 +7,11 @@ namespace MftConnector.Service;
 
 public static class ClientConfigUtility
 {
+    /// <summary>
+    /// Retrieves the client configuration from the database for the specified MFT client type.
+    /// </summary>
+    /// <param name="clientType">The type of MFT client for which to retrieve the configuration.</param>
+    /// <returns>A <see cref="MftConfig"/> object containing the configuration details for the specified client type.</returns>
     private static MftConfig GetClientConfig(MftClient clientType)
     {
         MftConfig config;
@@ -15,6 +20,11 @@ public static class ClientConfigUtility
         return config;
     }
 
+    /// <summary>
+    /// Configures an HttpClient instance with the necessary settings for the specified MFT client type.
+    /// </summary>
+    /// <param name="httpClient">The HttpClient instance to be configured.</param>
+    /// <param name="clientType">The type of MFT client for which to configure the HttpClient.</param>
     public static void ConfigureClient(HttpClient httpClient, MftClient clientType)
     {
         var config = GetClientConfig(clientType);

@@ -20,23 +20,7 @@ public class MftController : ControllerBase
     public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
     {
         var client = _mftClientFactory.Create(request.ClientType);
-        AddUser user = request.ClientType switch
-        {
-            MftClient.MoveIt => new MoveItAddUser
-            {
-                Username = request.Username,
-                Password = request.Password,
-                CloneFrom = request.CopyFrom
-            },
-            MftClient.GoAnywhere => new GoAnywhereAddUser
-            {
-                Username = request.Username,
-                Password = request.Password,
-                Template = request.CopyFrom,
-                FullName = $"{request.FirstName} {request.LastName}",
-            },
-            _ => throw new ArgumentOutOfRangeException()
-        };
+        var user = _mftClientFactory.CreateAddUser(request);
         var result = await client.AddUserAsync(user);
         return result ? Ok() : StatusCode(500, "Error creating user");
     }
