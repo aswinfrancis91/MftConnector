@@ -1,4 +1,4 @@
-﻿namespace ApiConnector;
+﻿namespace MftConnector.Models.Service;
 
 public enum MftClient
 {

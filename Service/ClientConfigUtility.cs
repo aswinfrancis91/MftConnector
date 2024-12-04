@@ -1,8 +1,9 @@
 ﻿using System.Net.Http.Headers;
 using System.Text;
-using ApiConnector.Repo;
+using MftConnector.Models.Service;
+using MftConnector.Repo;
 
-namespace ApiConnector;
+namespace MftConnector.Service;
 
 public static class ClientConfigUtility
 {
@@ -14,9 +15,9 @@ public static class ClientConfigUtility
         return config;
     }
 
-    public static void ConfigureClient(HttpClient httpClient)
+    public static void ConfigureClient(HttpClient httpClient, MftClient clientType)
     {
-        var config = GetClientConfig(MftClient.GoAnywhere);
+        var config = GetClientConfig(clientType);
         httpClient.BaseAddress = new Uri(config.BaseUrl);
         var base64EncodedAuthenticationString = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{config.Username}:{config.Password}"));
         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64EncodedAuthenticationString);

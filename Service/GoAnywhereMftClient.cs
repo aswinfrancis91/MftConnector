@@ -1,6 +1,7 @@
 ﻿using MftConnector.Interfaces;
+using MftConnector.Models.Service;
 
-namespace MftConnector.Models;
+namespace MftConnector.Service;
 
 public class GoAnywhereMftClient : IMftClient
 {
@@ -11,9 +12,9 @@ public class GoAnywhereMftClient : IMftClient
         _httpClient = httpClient;
     }
 
-    public async Task<bool> AddUserAsync()
+    public async Task<bool> AddUserAsync(AddUser user)
     {
-        var response = await _httpClient.PostAsync("/api/users", null); // Adjust path and content as needed
+        var response = await _httpClient.PostAsync("/api/users", null);
         return response.IsSuccessStatusCode;
     }
 

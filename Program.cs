@@ -1,8 +1,9 @@
 using System.Net.Http.Headers;
 using System.Text;
-using ApiConnector;
 using MftConnector.Interfaces;
 using MftConnector.Models;
+using MftConnector.Models.Service;
+using MftConnector.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IMftClientFactory, MftClientFactory>();
-builder.Services.AddHttpClient<GoAnywhereMftClient>(ClientConfigUtility.ConfigureClient);
-builder.Services.AddHttpClient<MoveItMftClient>(ClientConfigUtility.ConfigureClient);
+builder.Services.AddHttpClient<GoAnywhereMftClient>(httpClient => ClientConfigUtility.ConfigureClient(httpClient, MftClient.GoAnywhere));
+builder.Services.AddHttpClient<MoveItMftClient>(httpClient => ClientConfigUtility.ConfigureClient(httpClient, MftClient.MoveIt));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,4 +32,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-

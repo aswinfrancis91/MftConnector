@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using MftConnector.Models.Service;
 
-namespace ApiConnector.Repo;
+namespace MftConnector.Repo;
 
 public class MftConfig
 {

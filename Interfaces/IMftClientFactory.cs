@@ -1,4 +1,4 @@
-﻿using ApiConnector;
+﻿using MftConnector.Models.Service;
 
 namespace MftConnector.Interfaces;
 

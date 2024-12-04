@@ -1,7 +1,7 @@
 ﻿using MftConnector.Interfaces;
-using MftConnector.Models;
+using MftConnector.Models.Service;
 
-namespace ApiConnector;
+namespace MftConnector.Service;
 
 public class MftClientFactory : IMftClientFactory
 {

@@ -1,10 +1,12 @@
-﻿namespace MftConnector.Interfaces;
+﻿using MftConnector.Models.Service;
+
+namespace MftConnector.Interfaces;
 
 /// <summary>
 /// 
 /// </summary>
 public interface IMftClient
 {
-    Task<bool> AddUserAsync();
+    Task<bool> AddUserAsync(AddUser user);
     Task<bool> AddWorkflowAsync();
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ApiConnector.Repo;
+namespace MftConnector.Repo;
 
 public class MftConfigDbContext :DbContext
 {

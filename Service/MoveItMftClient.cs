@@ -1,6 +1,7 @@
 ﻿using MftConnector.Interfaces;
+using MftConnector.Models.Service;
 
-namespace MftConnector.Models;
+namespace MftConnector.Service;
 
 public class MoveItMftClient : IMftClient
 {
@@ -10,9 +11,10 @@ public class MoveItMftClient : IMftClient
     {
         _httpClient = httpClient;
     }
-    public async Task<bool> AddUserAsync()
+    public async Task<bool> AddUserAsync(AddUser user)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.PostAsync("/api/users", null); // Adjust path and content as needed
+        return response.IsSuccessStatusCode;
     }
 
     public async Task<bool> AddWorkflowAsync()
